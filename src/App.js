@@ -1,10 +1,13 @@
-import Navigation from '../components/Navigatoin';
-import Main from '../components/Main';
+import Header from './components/Header';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 function App() {
   return (
     <div>
-      <Navigation />
-      <Main />
+      <Header />
+      <TodoInput />
+      <h3>Erledigt</h3>
+      <TodoList />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import '../scss/main.scss';
+import '../scss/Main.scss';
 
 
 
@@ -20,14 +20,11 @@ function clearList() {
     }
   }
 }
-clear.addEventListener('click', clearList());
 
 function showList () {
   clearList();
   if (todo.length === 0) {
-    const li = document.createElement('li');
-    li.innerHTML = 'No tasks to show';
-    liste.appendChild(li);
+    alert('No tasks to show');
   } else {
     todo.forEach(item => {
       const li = document.createElement('li');
@@ -39,7 +36,7 @@ function showList () {
 };
 
 
-function Main () {
+function TodoInput () {
   return (
     <div className="main-container">
       <h1>Todo Input</h1>
@@ -48,10 +45,10 @@ function Main () {
         <button className="btn" onClick={addToList}>Add Item</button>
         <button className="btn clear" onClick={showList}>Show all tasks</button>
       </div>
-      <ul className="todo-list"></ul>
+      
     </div>
   );
 }
 
 
-export default Main;
+export default TodoInput;
