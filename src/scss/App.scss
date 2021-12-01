@@ -1,0 +1,17 @@
+ul {
+  background-color: gold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100px;
+  margin: 0;
+  align-items: center;
+  li {
+    list-style: none;
+    a{
+      display: block;
+      text-decoration: none;
+      font-size: 2rem;
+    }
+  }
+}

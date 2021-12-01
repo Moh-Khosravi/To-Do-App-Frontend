@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Navigation from '../components/Navigatoin';
+import Main from '../components/Main';
 function App() {
   return (
-    <div>Hallo Welt!</div>
+    <div>
+      <Navigation />
+      <Main />
+    </div>
   );
 }
 

@@ -1,0 +1,31 @@
+.main-container {
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+  .container-submit{
+    height: 100px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    input[type="text"] {
+      margin-top: 10px;
+      width: 20rem;
+      height: 3rem;
+    }
+    .btn {
+      margin-top: 10px;
+      height: 3rem;
+      width: 20rem;
+      font-size: 1.6rem;
+      background-color: #ffc212;
+      color: #171721
+    }
+  }
+  ul {
+    background-color: white;
+  }
+}
