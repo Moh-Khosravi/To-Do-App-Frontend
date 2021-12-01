@@ -1,5 +1,4 @@
-import '../scss/Main.scss';
-
+import '../scss/todoInput.scss';
 
 
 const restoredItem = localStorage.getItem('todo');
@@ -39,13 +38,16 @@ function showList () {
 function TodoInput () {
   return (
     <div className="main-container">
-      <h1>Todo Input</h1>
-      <div className="container-submit">
-        <input type="text" className="inputItem"/>
-        <button className="btn" onClick={addToList}>Add Item</button>
-        <button className="btn clear" onClick={showList}>Show all tasks</button>
+      <h1>What is your plan for today?</h1>
+      <div className="container-input">
+        <input type="text" className="inputItem" placeholder="Add a todo"/>
+        <button className="btn-add" onClick={addToList}>Add Item</button>
       </div>
-      
+      <div id="btn-container">
+        <button className="btn clear" onClick={showList}>Show all tasks</button>
+        <button className="show-active">Show active tasks</button>
+        <button className="show-complete">Show completed tasks</button>
+      </div>
     </div>
   );
 }
