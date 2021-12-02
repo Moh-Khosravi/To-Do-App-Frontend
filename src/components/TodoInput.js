@@ -1,50 +1,39 @@
 import '../scss/todoInput.scss';
+import { useState } from 'react';
 
 
 const restoredItem = localStorage.getItem('todo');
 const todo = restoredItem ? JSON.parse(restoredItem) : [];
-const inputItem = document.querySelector('.inputItem');
-const liste = document.querySelector('.todo-list');
-const clear = document.querySelector('.clear');
-function addToList () {
-  todo.push(inputItem.value);
-  localStorage.setItem('todo', JSON.stringify(todo));
-}
-function clearList() {
-  const countChild = liste.childElementCount;
-  if (countChild > 0) {
-    const child = liste.children;
-    for (let i = 0; i < countChild; i++) {
-      liste.removeChild(child[i]);
-    }
-  }
-}
-
-function showList () {
-  clearList();
-  if (todo.length === 0) {
-    alert('No tasks to show');
-  } else {
-    todo.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = item;
-      liste.appendChild(li);
-    });
-  }
- 
-};
-
+export const openTodo = todo.filter(item => !item.completed);
+export const completedTodo = todo.filter(item => item.completed);
 
 function TodoInput () {
+  const [input, setInput] = useState('');
+
+  function handleChange(event) {
+    setInput(event.target.value);
+  }
+  function handleSubmit (event) {
+    event.preventDefault();
+    setInput('');
+  }
+  function addToList () {
+    if (input === '') {
+      return;
+    }
+    todo.push({title: input, completed: false});
+    localStorage.setItem('todo', JSON.stringify(todo));
+  };
+
   return (
-    <div className="main-container">
+    <div className="main-container" >
       <h1>What is your plan for today?</h1>
-      <div className="container-input">
-        <input type="text" className="inputItem" placeholder="Add a todo"/>
+      <form className="container-input" onSubmit={handleSubmit}>
+        <input type="text" className="inputItem" placeholder="Add a todo" value={input} onChange={handleChange}/>
         <button className="btn-add" onClick={addToList}>Add Item</button>
-      </div>
+      </form>
       <div id="btn-container">
-        <button className="btn clear" onClick={showList}>Show all tasks</button>
+        <button className="btn clear">Show all tasks</button>
         <button className="show-active">Show active tasks</button>
         <button className="show-complete">Show completed tasks</button>
       </div>

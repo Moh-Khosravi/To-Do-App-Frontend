@@ -1,8 +1,19 @@
-function TodoList() {
+import '../scss/todoList.scss'
+import TodoItem from './TodoItem';
+
+function TodoList(props) {
+
+  const todos = props.todos;
+  console.log('hier', todos);
+
+  function createLi() {
+    return todos.map((todo, index) => (<TodoItem todo={todo} key={index}/>))
+  }
+
   return (
-    <div>
-      <ul className="todo-list"></ul>
-    </div>
+    <ul className="container-todolist">
+      {createLi()}
+    </ul>
   )
 }
 

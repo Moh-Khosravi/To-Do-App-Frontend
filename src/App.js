@@ -1,13 +1,14 @@
 import Header from './components/Header';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
+import { openTodo } from './components/TodoInput';
+/* import { completedTodo } from 'TodoInput'; */
 function App() {
   return (
     <div>
       <Header />
       <TodoInput />
-      <h3>Erledigt</h3>
-      <TodoList />
+      <TodoList todos={openTodo} />
     </div>
   );
 }
