@@ -1,0 +1,32 @@
+.container-todobody{
+  font-size: 3rem;
+  width: 100vw;
+  text-align: center;
+  h2{
+    margin-top: 5px;
+  }
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    li {
+      margin-top: 1rem;
+      list-style: none;
+      width: 60%;
+      height: 5rem;
+      border-style: solid;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        margin-left: 10px;
+      }
+      .container-icons {
+        display: flex;
+        width: 150px;
+        background-color: red;
+        justify-content: space-around;
+      }
+    }
+  }
+}

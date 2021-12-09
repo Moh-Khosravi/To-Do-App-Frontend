@@ -1,14 +1,26 @@
+import { useState } from 'react';
 import Header from './components/Header';
-import TodoInput from './components/TodoInput';
-import TodoList from './components/TodoList';
-import { openTodo } from './components/TodoInput';
-/* import { completedTodo } from 'TodoInput'; */
+import Form from './components/Form';
+import TodoBody from './components/TodoBody';
+/* import { openTodo } from './components/Form';
+import { completedTodo } from './components/Form'; */
 function App() {
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+  const [edit, setEdit] = useState('');
   return (
     <div>
       <Header />
-      <TodoInput />
-      <TodoList todos={openTodo} />
+      <Form 
+        input={input}
+        setInput={setInput}
+        list={list}
+        setList={setList}
+      />
+      <TodoBody 
+        list={list}
+        setList={setList}
+      />
     </div>
   );
 }

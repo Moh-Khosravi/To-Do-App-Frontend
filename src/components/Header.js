@@ -1,4 +1,4 @@
-import '../scss/App.scss';
+import '../scss/header.scss';
 function Header () {
   return(
     <ul className="navigation-bar">
