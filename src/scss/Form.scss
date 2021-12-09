@@ -6,9 +6,9 @@ $btnGold: #ffc212;
   flex-direction: column;
   justify-content: center;
   .container-form{
-    border-style: solid;
+    /* border-style: solid; */
     h1 {
-      font-size: 3rem;
+      font-size: 5rem;
       text-align: center;
     }
     .container-input{
@@ -35,21 +35,6 @@ $btnGold: #ffc212;
         background-color: $btnGold;
         color: #171721;
       }
-    }
-    #btn-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 65rem;
-      margin: auto;
-      margin-bottom: 10px;
-      button{
-        background-color: $btnGold;
-        font-size: 1.6rem;
-        height: 3rem;
-        width: 18rem;
-      }
-
     }
   }
 }

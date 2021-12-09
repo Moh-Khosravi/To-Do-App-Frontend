@@ -1,0 +1,51 @@
+.popup {
+  width: 40vw;
+  height: 30vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  h2{
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+      width: 20vw;
+      height: 3rem;
+      border:none;
+      border-radius: 10px;
+      padding-left: 1rem;
+      font-size: 2rem;
+    }
+    .popup-btn {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 2rem;
+      width: 100%;
+
+      .btn-update {
+        width: 8vw;
+        height: 3rem;
+        margin-right: 1rem;
+        background-color: gold;
+        border-radius: 1rem;
+        border: none;
+      }
+      .btn-close{
+        width: 8vw;
+        height: 3rem;
+        background-color: red;
+        border-radius: 1rem;
+        border: none;
+      }
+    }
+  }
+}

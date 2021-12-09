@@ -1,14 +1,19 @@
 .container-todobody{
-  font-size: 3rem;
-  width: 100vw;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
   h2{
     margin-top: 5px;
   }
   ul {
-    width: 100%;
+    width: 60vw;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3rem;
     li {
       margin-top: 1rem;
       list-style: none;
@@ -24,7 +29,6 @@
       .container-icons {
         display: flex;
         width: 150px;
-        background-color: red;
         justify-content: space-around;
       }
     }

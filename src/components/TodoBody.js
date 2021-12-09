@@ -1,7 +1,7 @@
 import '../scss/todoBody.scss'
 import TodoItem from './TodoItem';
 
-function TodoBody({ list, setList}) {
+function TodoBody({ list, onRemove, onDone, onEdit, setIsOpen }) {
 
   const todos = list;
   const openTodo = todos.filter(item => !item.completed);
@@ -9,7 +9,14 @@ function TodoBody({ list, setList}) {
 
   function createLi(param) {
     return param.map((todo, index) => (
-      <TodoItem todo={todo} list={list} setList={setList} key={index}/>
+      <TodoItem 
+      todo={todo} 
+      onRemove={onRemove}
+      onDone={onDone}
+      onEdit={onEdit}
+      setIsOpen={setIsOpen}
+      key={index}
+      />
     ))
   }
 

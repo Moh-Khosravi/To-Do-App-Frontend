@@ -1,25 +1,66 @@
-import { useState } from 'react';
-import Header from './components/Header';
+import { useReducer, useState } from 'react';
 import Form from './components/Form';
 import TodoBody from './components/TodoBody';
+import Popup from './components/Popup';
 /* import { openTodo } from './components/Form';
 import { completedTodo } from './components/Form'; */
 function App() {
-  const [input, setInput] = useState('');
-  const [list, setList] = useState([]);
-  const [edit, setEdit] = useState('');
+  function reducer(state, action) {
+    const newState = [...state];
+    if (action.type === 'remove') {
+      const newList = newState.filter((todo) => todo.title !== action.title);
+      return newList;
+    } else if (action.type === 'done') {
+      const newList = newState.map(item => {
+        if (item.title === action.title) {
+          return {...item, completed: !item.completed};
+        }
+        return item;
+      })
+      return newList;
+    } else if (action.type === 'add') {
+      const newList = [...newState, action];
+      return newList;
+    } else if (action.type === 'edit') {
+      setIsOpen(true);
+    
+    }
+    return newState;
+  }
+  
+  function onAdd(input) {
+    dispatch({type: 'add', title: input, completed: false});
+  }
+
+  function onRemove (title, completed) {
+    dispatch({type: 'remove', title: title, completed: completed});
+  }
+  function onDone (title, completed) {
+    dispatch({type: 'done', title: title, completed: completed});
+  }
+  function onEdit(title, completed) {
+    dispatch({type: 'edit', title: title, completed: completed});
+  }
+
+  const [list, dispatch] = useReducer(reducer, []);
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div>
-      <Header />
+    <div className='container-app'>
+      {/* <Header /> */}
       <Form 
-        input={input}
-        setInput={setInput}
-        list={list}
-        setList={setList}
+        onAdd={onAdd}
       />
       <TodoBody 
         list={list}
-        setList={setList}
+        onRemove={onRemove}
+        onDone={onDone}
+        onEdit={onEdit}
+        setIsOpen={setIsOpen}
+      />
+      <Popup 
+        trigger={isOpen}
+        setIsOpen={setIsOpen}
       />
     </div>
   );

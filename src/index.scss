@@ -1,5 +1,9 @@
 html {
   font-size: 62.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 * {
   margin: 0;
@@ -7,7 +11,10 @@ html {
   box-sizing: border-box;
 }
 body {
+  width: 60vw;
+  height: 100%;
   margin: 0;
+  background-color: #cbffcb;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -18,4 +25,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,4 +1,4 @@
-import '../scss/header.scss';
+/* import '../scss/header.scss';
 function Header () {
   return(
     <ul className="navigation-bar">
@@ -9,4 +9,4 @@ function Header () {
   )
 }
 
-export default Header;
+export default Header; */
