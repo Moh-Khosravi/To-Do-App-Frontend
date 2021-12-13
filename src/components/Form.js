@@ -1,5 +1,6 @@
 import '../scss/Form.scss';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 /* const restoredItem = localStorage.getItem('todo');
 const todo = restoredItem ? JSON.parse(restoredItem) : [];
 export const openTodo = todo.filter(item => !item.completed);
@@ -17,7 +18,7 @@ function Form({ onAdd }) {
   }
 
   function handleAdd () {
-    onAdd(input);
+    onAdd(input, uuidv4());
   }
   return (
     <div className="main-container" >

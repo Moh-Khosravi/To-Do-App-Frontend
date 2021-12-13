@@ -1,34 +1,25 @@
 import '../scss/todoBody.scss'
+
 import TodoItem from './TodoItem';
 
-function TodoBody({ list, onRemove, onDone, onEdit, setIsOpen }) {
+function TodoBody({ list, onRemove, onDone, onEdit }) {
+  
+  const todos = [...list];
 
-  const todos = list;
-  const openTodo = todos.filter(item => !item.completed);
-  const completedTodo = todos.filter(item => item.completed);
-
-  function createLi(param) {
-    return param.map((todo, index) => (
+  function createLi() {
+    return todos.map((todo) => (
       <TodoItem 
       todo={todo} 
       onRemove={onRemove}
       onDone={onDone}
       onEdit={onEdit}
-      setIsOpen={setIsOpen}
-      key={index}
       />
     ))
   }
-
   return (
     <div className="container-todobody">
-      <h2>Open Todo</h2>
-      <ul>
-        {createLi(openTodo)}
-      </ul>
-      <h2>Completed</h2>
-      <ul>
-        {createLi(completedTodo)}
+      <ul className='list-todo'>
+        {createLi()}
       </ul>
     </div>
   )

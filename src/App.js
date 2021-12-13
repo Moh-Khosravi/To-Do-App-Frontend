@@ -1,18 +1,20 @@
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import Form from './components/Form';
 import TodoBody from './components/TodoBody';
-import Popup from './components/Popup';
 /* import { openTodo } from './components/Form';
 import { completedTodo } from './components/Form'; */
 function App() {
+
+  const [list, dispatch] = useReducer(reducer, []);
+
   function reducer(state, action) {
     const newState = [...state];
     if (action.type === 'remove') {
-      const newList = newState.filter((todo) => todo.title !== action.title);
+      const newList = newState.filter((todo) => todo.id !== action.id);
       return newList;
     } else if (action.type === 'done') {
       const newList = newState.map(item => {
-        if (item.title === action.title) {
+        if (item.id === action.id) {
           return {...item, completed: !item.completed};
         }
         return item;
@@ -22,29 +24,31 @@ function App() {
       const newList = [...newState, action];
       return newList;
     } else if (action.type === 'edit') {
-      setIsOpen(true);
-    
+      return newState.map(item => {
+        if (item.id === action.id) {
+          return {...item, title: action.title}
+        }
+        return item;
+      })
     }
+
     return newState;
   }
   
-  function onAdd(input) {
-    dispatch({type: 'add', title: input, completed: false});
+  function onAdd(input,id) {
+    dispatch({type: 'add', title: input, completed: false, id: id});
   }
 
-  function onRemove (title, completed) {
-    dispatch({type: 'remove', title: title, completed: completed});
+  function onRemove (title, id) {
+    dispatch({type: 'remove', title: title, id: id});
   }
-  function onDone (title, completed) {
-    dispatch({type: 'done', title: title, completed: completed});
-  }
-  function onEdit(title, completed) {
-    dispatch({type: 'edit', title: title, completed: completed});
+  function onDone (title, completed, id) {
+    dispatch({type: 'done', title: title, completed: completed, id: id});
   }
 
-  const [list, dispatch] = useReducer(reducer, []);
-  const [isOpen, setIsOpen] = useState(false);
-
+  function onEdit (title, id) {
+    dispatch({type: 'edit', title: title, id: id});
+  }
   return (
     <div className='container-app'>
       {/* <Header /> */}
@@ -56,11 +60,6 @@ function App() {
         onRemove={onRemove}
         onDone={onDone}
         onEdit={onEdit}
-        setIsOpen={setIsOpen}
-      />
-      <Popup 
-        trigger={isOpen}
-        setIsOpen={setIsOpen}
       />
     </div>
   );

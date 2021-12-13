@@ -1,30 +1,35 @@
 import React from 'react';
-import {RiCloseCircleLine} from 'react-icons/ri';
-import {TiEdit} from 'react-icons/ti';
-import {MdDone} from 'react-icons/md';
-import colorGenerator from './randomColor';
-function TodoItem({ todo, onRemove, onDone, onEdit, setIsOpen, key}) {
-
-  let { title, completed } = todo;
+import {MdDeleteForever} from 'react-icons/md';
+import {MdEditNote} from 'react-icons/md';
+import {MdDoneAll} from 'react-icons/md';
+import {useState } from 'react';
+function TodoItem({ todo, onRemove, onDone, onEdit }) {
+  const [isEditing, setIsEditing] = useState(false);
+  let { title, completed, id } = todo;
 
   function handleDelete () {
-    onRemove(title, completed);
+    onRemove(title, id);
   }
   function handleDone () {
-    onDone(title, completed);
+    onDone(title, completed, id);
   }
-  function handleEdit () {
-    onEdit(title, completed);
+  function handleEdit (event) {
+    onEdit(event.target.value, id)
   }
-  const color = colorGenerator();
-  const id = title + key;
+  function addNewInput () {
+    if (!isEditing) {
+      return <span>{title}</span>
+    } else {
+      return <input type="text" onChange={handleEdit} value={title} />
+    }
+  }
   return (
-    <li className={title} key={id} style={{backgroundColor: color}}>
-      <span>{title}</span>
+    <li className={completed ? 'completed' : 'not-compl'}>
+      {addNewInput()}
       <div className="container-icons">
-        <RiCloseCircleLine className="close" onClick={handleDelete}/> 
-        <TiEdit className="edit" onClick={() => setIsOpen(true)}/>
-        <MdDone className="done" onClick={handleDone}/>
+        <MdDeleteForever className="close" onClick={handleDelete} /> 
+        <MdEditNote className="edit" onClick={() => setIsEditing(!isEditing)} />
+        <MdDoneAll className="done" onClick={handleDone} />
       </div>
     </li>
   )
