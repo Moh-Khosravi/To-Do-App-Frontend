@@ -1,13 +1,15 @@
 import '../scss/Form.scss';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-/* const restoredItem = localStorage.getItem('todo');
-const todo = restoredItem ? JSON.parse(restoredItem) : [];
-export const openTodo = todo.filter(item => !item.completed);
-export const completedTodo = todo.filter(item => item.completed); */
+
 
 function Form({ onAdd }) {
   const [input, setInput] = useState('');
+  const [inputDate, setInputDate] = useState('');
+
+  function handleDate(event) {
+    setInputDate(event.target.value);
+  }
 
   function handleChange(event) {
     setInput(event.target.value);
@@ -18,7 +20,7 @@ function Form({ onAdd }) {
   }
 
   function handleAdd () {
-    onAdd(input, uuidv4());
+    onAdd(input, inputDate, uuidv4());
   }
   return (
     <div className="main-container" >
@@ -26,6 +28,7 @@ function Form({ onAdd }) {
         <h1>What is your plan for today?</h1>
         <form className="container-input" onSubmit={handleSubmit}>
           <input type="text" className="inputItem" placeholder="Add a todo ..." value={input} onChange={handleChange}/>
+          <input type="date" className='inputDate' onChange={handleDate}/>
           <button className="btn-add" onClick={handleAdd}>Add Item</button>
         </form>
       </div>

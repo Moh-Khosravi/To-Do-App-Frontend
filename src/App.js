@@ -1,11 +1,20 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import Form from './components/Form';
 import TodoBody from './components/TodoBody';
-/* import { openTodo } from './components/Form';
-import { completedTodo } from './components/Form'; */
+
 function App() {
 
   const [list, dispatch] = useReducer(reducer, []);
+
+  useEffect(() => {
+    const restoredItem = localStorage.getItem('todoList');
+    const todoList = restoredItem ? JSON.parse(restoredItem) : [];
+    dispatch({ type: 'restored', payload: todoList });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todoList', JSON.stringify(list));
+  }, [list]);
 
   function reducer(state, action) {
     const newState = [...state];
@@ -26,17 +35,19 @@ function App() {
     } else if (action.type === 'edit') {
       return newState.map(item => {
         if (item.id === action.id) {
-          return {...item, title: action.title}
+          return {...item, title: action.title, date: action.date};
         }
         return item;
       })
+    } else if (action.type === 'restored') {
+        return action.payload;
     }
 
     return newState;
   }
   
-  function onAdd(input,id) {
-    dispatch({type: 'add', title: input, completed: false, id: id});
+  function onAdd(input,date,id) {
+    dispatch({type: 'add', title: input, date: date, completed: false, id: id});
   }
 
   function onRemove (title, id) {
@@ -46,8 +57,8 @@ function App() {
     dispatch({type: 'done', title: title, completed: completed, id: id});
   }
 
-  function onEdit (title, id) {
-    dispatch({type: 'edit', title: title, id: id});
+  function onEdit (title, date, id) {
+    dispatch({type: 'edit', title: title, date: date, id: id});
   }
   return (
     <div className='container-app'>

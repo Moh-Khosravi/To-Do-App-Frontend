@@ -5,22 +5,40 @@ import {MdDoneAll} from 'react-icons/md';
 import {useState } from 'react';
 function TodoItem({ todo, onRemove, onDone, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
-  let { title, completed, id } = todo;
-
+  let { title, date, completed, id } = todo;
+  const [dateChange, setDateChange] = useState(date);
+  const [titleChange, setTitleChange] = useState(title);
   function handleDelete () {
     onRemove(title, id);
   }
   function handleDone () {
     onDone(title, completed, id);
   }
-  function handleEdit (event) {
-    onEdit(event.target.value, id)
+  function handleEdit () {
+    onEdit(titleChange, dateChange, id)
   }
+  function changeTitle (event) {
+    setTitleChange(event.target.value);
+  }
+  function changeDate(event) {
+    setDateChange(event.target.value);
+  }
+
   function addNewInput () {
     if (!isEditing) {
-      return <span>{title}</span>
+      return (
+        <div className='content'>
+          <p className='title'>{title}</p>
+          <p className='date'>{date}</p>
+        </div>)
     } else {
-      return <input type="text" onChange={handleEdit} value={title} />
+      return (
+        <div>
+          <input type="text" onChange={changeTitle} value={title} />
+          <input type="date" onChange={changeDate} value={date} />
+          
+        </div>
+      )
     }
   }
   return (
