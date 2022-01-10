@@ -1,9 +1,13 @@
 import '../scss/Form.scss';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import DataStore from '../Datastore';
+import { useContext } from 'react';
 
+function Form() {
 
-function Form({ onAdd }) {
+  const { onAdd } = useContext(DataStore);
+
   const [input, setInput] = useState('');
   const [inputDate, setInputDate] = useState('');
 
@@ -17,6 +21,7 @@ function Form({ onAdd }) {
   function handleSubmit (event) {
     event.preventDefault();
     setInput('');
+    setInputDate('');
   }
 
   function handleAdd () {
@@ -28,7 +33,7 @@ function Form({ onAdd }) {
         <h1>What is your plan for today?</h1>
         <form className="container-input" onSubmit={handleSubmit}>
           <input type="text" className="inputItem" placeholder="Add a todo ..." value={input} onChange={handleChange}/>
-          <input type="date" className='inputDate' onChange={handleDate}/>
+          <input type="date" className='inputDate' placeholder="Add a todo ..." onChange={handleDate}/>
           <button className="btn-add" onClick={handleAdd}>Add Item</button>
         </form>
       </div>
