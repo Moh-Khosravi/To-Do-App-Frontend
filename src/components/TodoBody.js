@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 
 function TodoBody() {
-  const { list, onRemove, onDone, onEdit } = useContext(DataStore);
+  const { list } = useContext(DataStore);
   const todos = [...list];
 
   function createLi() {
