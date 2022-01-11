@@ -9,7 +9,7 @@ function Form() {
   const { onAdd } = useContext(DataStore);
 
   const [input, setInput] = useState('');
-  const [inputDate, setInputDate] = useState('');
+  const [inputDate, setInputDate] = useState(null);
 
   function handleDate(event) {
     setInputDate(event.target.value);
@@ -25,15 +25,21 @@ function Form() {
   }
 
   function handleAdd () {
-    onAdd(input, inputDate, uuidv4());
+    if (!input || /^\s*$/.test(input)) {
+      alert('Please enter a task');
+      return;
+    } else {
+      onAdd(input, inputDate, uuidv4());
+    }
   }
+
   return (
     <div className="main-container" >
       <div className="container-form">
         <h1>What is your plan for today?</h1>
         <form className="container-input" onSubmit={handleSubmit}>
           <input type="text" className="inputItem" placeholder="Add a todo ..." value={input} onChange={handleChange}/>
-          <input type="date" className='inputDate' placeholder="Add a todo ..." onChange={handleDate}/>
+          <input type="date" className='inputDate' placeholder="Add a todo ..." value={inputDate} onChange={handleDate}/>
           <button className="btn-add" onClick={handleAdd}>Add Item</button>
         </form>
       </div>
