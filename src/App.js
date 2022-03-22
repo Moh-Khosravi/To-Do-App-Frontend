@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/FormLogin.js';
 import Register from './components/Register.js';
 import SignInSignUp from './components/SignInSignUp.js';

@@ -29,12 +29,12 @@ function FormLogin() {
     if (rawResponse.status === 200) {
       const data = await rawResponse.json();
       sessionStorage.token = data.token;
-      sessionStorage.user = data.user.id;
       setUserId(data.user.id);
       setUserName(data.user.firstName + ' ' + data.user.lastName);
       setList(data.user.todos);
-
       navigate('/user');
+    } else {
+      alert('Invalid login credentials');
     }
   }
 

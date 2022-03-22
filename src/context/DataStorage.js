@@ -14,7 +14,6 @@ function AppState(props) {
   }
 
   function postTodo(input, inputStartDate, inputEndDate) {
-    console.log('userid', userId);
     fetch(process.env.REACT_APP_FETCH_URL_TODO, {
       method: 'POST',
       headers: {
@@ -31,7 +30,6 @@ function AppState(props) {
       }),
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           getUser(userId);
         }
