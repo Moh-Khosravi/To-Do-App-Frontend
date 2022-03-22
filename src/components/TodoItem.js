@@ -1,71 +1,80 @@
 import React from 'react';
-import {MdDeleteForever} from 'react-icons/md';
-import {MdEditNote} from 'react-icons/md';
-import {MdDoneAll} from 'react-icons/md';
+import { MdDeleteForever } from 'react-icons/md';
+import { MdEditNote } from 'react-icons/md';
+//import { MdDoneAll } from 'react-icons/md';
 import { useState } from 'react';
-import DataStore from '../Datastore';
-import { useContext } from 'react';
+import { useAppData } from '../context/DataStorage.js';
 
 function TodoItem({ todo }) {
-  const { onRemove, onDone, onEdit } = useContext(DataStore);
-  
-  let { title, date, completed, id } = todo;
+  const { updateTodo, deleteTodo } = useAppData();
+
+  let { title, startDate, endDate, completed, _id } = todo;
 
   const [isEditing, setIsEditing] = useState(false);
-  const [dateChange, setDateChange] = useState(date);
+  const [startDateChange, setStartDateChange] = useState(startDate);
+  const [endDateChange, setEndDateChange] = useState(endDate);
   const [titleChange, setTitleChange] = useState(title);
 
-  function handleDelete () {
-    onRemove(title, id);
+  function handleDelete() {
+    deleteTodo(_id);
   }
-  function handleDone () {
+  /*   function handleDone() {
     onDone(title, completed, id);
-  }
+  } */
 
-  function changeTitle (event) {
+  function changeTitle(event) {
     setTitleChange(event.target.value);
-    
   }
-  function changeDate(event) {
-    setDateChange(event.target.value);
-    
+  function changeStartDate(event) {
+    setStartDateChange(event.target.value);
   }
-
-  function handleEdit () {
+  function changeEndDate(event) {
+    setEndDateChange(event.target.value);
+  }
+  function handleEdit() {
     setIsEditing(!isEditing);
-    onEdit(titleChange, dateChange, id)
+    updateTodo(_id, titleChange, startDateChange, endDateChange, completed);
   }
-  function dateFormat () {
-    const newDate = dateChange.split('-');
+  function dateFormat(param) {
+    const newDate = param.split('-');
     const newFormat = newDate.reverse().join('-');
     return newFormat;
   }
-  function addNewInput () {
+  function addNewInput() {
     if (!isEditing) {
       return (
-        <div className='content'>
-          <p className='title'>{title}</p>
-          <p className='date'>{dateFormat()}</p>
-        </div>)
+        <div className="content">
+          <p className="title">{title}</p>
+          <div className="date">
+            <p>Start: {dateFormat(startDateChange)}</p>
+            <p>End: {dateFormat(endDateChange)}</p>
+          </div>
+        </div>
+      );
     } else {
       return (
         <form onSubmit={(e) => e.preventDefault()}>
           <input type="text" onChange={changeTitle} value={titleChange} />
-          <input type="date" onChange={changeDate} value={dateChange} />
+          <input
+            type="date"
+            onChange={changeStartDate}
+            value={startDateChange}
+          />
+          <input type="date" onChange={changeEndDate} value={endDateChange} />
         </form>
-      )
+      );
     }
   }
   return (
     <li className={completed ? 'completed' : 'not-compl'}>
       {addNewInput()}
       <div className="container-icons">
-        <MdDeleteForever className="close" onClick={handleDelete} /> 
+        <MdDeleteForever className="close" onClick={handleDelete} />
         <MdEditNote className="edit" onClick={handleEdit} />
-        <MdDoneAll className="done" onClick={handleDone} />
+        {/* <MdDoneAll className="done" onClick={handleDone} /> */}
       </div>
     </li>
-  )
+  );
 }
 
-export default TodoItem
+export default TodoItem;

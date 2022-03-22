@@ -1,0 +1,19 @@
+.container-sign-in-sign-up {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 2rem;
+}
+
+.link-lr {
+  border-radius: 1rem;
+  padding: 1rem;
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  border: 1px solid white;
+  background-color: #007bff;
+}

@@ -2,8 +2,8 @@ $btnGold: #f4976c;
 .main-container {
   width: 100%;
   height: 23vh;
-  .container-form{
-    width:100%;
+  .container-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@ $btnGold: #f4976c;
       height: 30%;
       margin: 20px 0;
     }
-    .container-input{
+    .container-input {
       height: 100px;
       display: flex;
       flex-direction: column;
@@ -23,27 +23,45 @@ $btnGold: #f4976c;
       width: 90%;
       height: 70%;
       margin-top: 15px;
-      input[type="text"] {
+      input[type='text'] {
         width: 70%;
         height: 3rem;
         padding-left: 1rem;
         border: none;
         border-radius: 5px;
         outline: none;
+        font-size: 1.6rem;
       }
-      input[type="date"] {
-        width: 40%;
+      div {
+        width: 60%;
         height: 3rem;
-        padding-left: 1rem;
-        border: none;
-        border-radius: 5px;
-        outline: none;
-        margin-top: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        label {
+          font-size: 1.6rem;
+          color: #fff;
+          font-weight: bold;
+          margin-right: 10px;
+          text-align: left;
+        }
+        input[type='date'] {
+          width: 70%;
+          height: 3rem;
+          padding-left: 1rem;
+          border: none;
+          border-radius: 5px;
+          outline: none;
+          position: absolute;
+          right: 0;
+          font-size: 1.6rem;
+        }
       }
       .btn-add {
         margin-left: 10px;
-        margin-top: 10px;
-        height: 3rem;
+        margin-top: 1.5rem;
+        height: 4rem;
         width: 30%;
         font-size: 1.8rem;
         background-color: $btnGold;
