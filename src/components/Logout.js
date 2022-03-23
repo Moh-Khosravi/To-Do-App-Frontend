@@ -5,13 +5,14 @@ import { FiLogOut } from 'react-icons/fi';
 
 function Logout() {
   const navigate = useNavigate();
-  const { setUserId, setList, setUserName } = useAppData();
+  const { setUserId, setList, setUserName, setIsLoged } = useAppData();
 
   function handleLogout() {
     sessionStorage.clear();
     setUserId('');
     setUserName('');
     setList([]);
+    setIsLoged(false);
     navigate('/');
   }
 

@@ -29,11 +29,10 @@ code {
 #root {
   //width: 520px;
   width: 700px;
-  height: 600px;
+  min-height: 600px;
   background-color: #303c6c;
   margin: 128px auto;
-  border-radius: 10px;
-  padding-bottom: 32px;
+  border-radius: 1rem;
 }
 
 .container-app {
@@ -50,6 +49,7 @@ code {
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
 }
 
 .container-home {

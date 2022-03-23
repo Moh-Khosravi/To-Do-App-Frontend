@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import Cookies from 'js-cookie';
 
 const DataStorage = createContext();
 
@@ -6,6 +7,7 @@ function AppState(props) {
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
   const [list, setList] = useState([]);
+  const [isLoged, setIsLoged] = useState(false);
 
   function getUser() {
     fetch(process.env.REACT_APP_FETCH_URL_USER + `/${userId}`)
@@ -19,7 +21,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${sessionStorage.token}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
       },
       body: JSON.stringify({
         title: input,
@@ -45,7 +47,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${sessionStorage.token}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
       },
     })
       .then((response) => {
@@ -64,7 +66,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${sessionStorage.token}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
       },
       body: JSON.stringify({
         title: input,
@@ -96,6 +98,8 @@ function AppState(props) {
         deleteTodo,
         setUserName,
         userName,
+        isLoged,
+        setIsLoged,
       }}
     >
       {props.children}

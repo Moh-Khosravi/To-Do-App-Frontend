@@ -3,10 +3,11 @@ import './FormLogin.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAppData } from '../context/DataStorage.js';
 import Logo from '../image/Logo.png';
+import Cookies from 'js-cookie';
 
 function FormLogin() {
   const navigate = useNavigate();
-  const { setUserId, setList, setUserName } = useAppData();
+  const { setUserId, setList, setUserName, setIsLoged } = useAppData();
 
   async function submit(e) {
     e.preventDefault();
@@ -28,7 +29,9 @@ function FormLogin() {
 
     if (rawResponse.status === 200) {
       const data = await rawResponse.json();
-      sessionStorage.token = data.token;
+      //sessionStorage.token = data.token;
+      Cookies.set('token', data.token);
+      setIsLoged(true);
       setUserId(data.user.id);
       setUserName(data.user.firstName + ' ' + data.user.lastName);
       setList(data.user.todos);

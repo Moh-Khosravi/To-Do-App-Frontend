@@ -25,6 +25,7 @@ yarn-error.log*
 .vercel
 
 Popup.js
+popup.scss
 
 .env
 App copy.js
