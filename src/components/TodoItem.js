@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 import { MdEditNote } from 'react-icons/md';
-//import { MdDoneAll } from 'react-icons/md';
+import { MdDoneAll } from 'react-icons/md';
 import { useState } from 'react';
 import { useAppData } from '../context/DataStorage.js';
 
@@ -18,9 +18,9 @@ function TodoItem({ todo }) {
   function handleDelete() {
     deleteTodo(_id);
   }
-  /*   function handleDone() {
-    onDone(title, completed, id);
-  } */
+  function handleDone() {
+    updateTodo(_id, titleChange, startDateChange, endDateChange, !completed);
+  }
 
   function changeTitle(event) {
     setTitleChange(event.target.value);
@@ -71,7 +71,7 @@ function TodoItem({ todo }) {
       <div className="container-icons">
         <MdDeleteForever className="close" onClick={handleDelete} />
         <MdEditNote className="edit" onClick={handleEdit} />
-        {/* <MdDoneAll className="done" onClick={handleDone} /> */}
+        <MdDoneAll className="done" onClick={handleDone} />
       </div>
     </li>
   );

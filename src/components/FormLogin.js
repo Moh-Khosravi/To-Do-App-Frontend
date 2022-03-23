@@ -1,8 +1,8 @@
 import React from 'react';
 import './FormLogin.css';
-import { useNavigate } from 'react-router-dom';
-import SignInSignUp from './SignInSignUp';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAppData } from '../context/DataStorage.js';
+import Logo from '../image/Logo.png';
 
 function FormLogin() {
   const navigate = useNavigate();
@@ -40,10 +40,12 @@ function FormLogin() {
 
   return (
     <div className="flex flex-col h-full mt-0 container-login">
-      <SignInSignUp />
+      <Link to="/">
+        <img className="logo" src={Logo} alt="" />
+      </Link>
       <div className="form-container">
         <form onSubmit={submit} className="form-signin">
-          <h1 className="mb-3 fw-normal">Please sign in</h1>
+          <h1 className="mb-3 fw-normal text-dark">Please sign in</h1>
           <div className="form-floating mb-2">
             <input
               name="email"

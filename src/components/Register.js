@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
-import SignInSignUp from './SignInSignUp.js';
+import Logo from '../image/Logo.png';
 
 function Register() {
   const navigate = useNavigate();
@@ -33,10 +33,12 @@ function Register() {
 
   return (
     <div className="flex flex-col h-full mt-0 container-register">
-      <SignInSignUp />
+      <Link to="/">
+        <img className="logo" src={Logo} alt="" />
+      </Link>
       <div className="container-form-register">
         <form onSubmit={registerUser} className="signup-formular">
-          <h1 className="mb-3 fw-normal">Please sign up</h1>
+          <h1 className="mb-3 fw-normal text-dark">Please sign up</h1>
           <div className="form-floating mb-2">
             <input
               name="firstName"

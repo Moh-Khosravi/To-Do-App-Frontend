@@ -1,6 +1,3 @@
-// completed muss gemacht werden.
-// wenn Zeit ist, dann das Design noch anpassen
-
 import React from 'react';
 import { useAppData } from '../context/DataStorage.js';
 import { useNavigate } from 'react-router-dom';

@@ -29,7 +29,7 @@ code {
 #root {
   //width: 520px;
   width: 700px;
-  min-height: 600px;
+  height: 600px;
   background-color: #303c6c;
   margin: 128px auto;
   border-radius: 10px;
@@ -48,6 +48,79 @@ code {
 .container-logout {
   font-size: 3rem;
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
+}
+
+.container-home {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.container-home-btn-h1 {
+  padding-left: 2rem;
+}
+
+.container-home-btn-h1 h1 {
+  font-size: 3rem;
+  color: black;
+  font-weight: bold;
+}
+
+.container-home-btn-h1 button {
+  width: 10rem;
+  height: 4rem;
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.signin-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
+.signin-btn:hover {
+  background-color: #3e53a7;
+  box-shadow: 0px 0px 10px #303c6c;
+}
+
+.signup-btn {
+  background-color: white;
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.signup-btn:hover {
+  background-color: lightgray;
+  color: #0d6efd;
+  box-shadow: 0px 0px 10px #303c6c;
+}
+
+.home-p {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: black;
+  padding-left: 1rem;
+}
+
+.logo {
+  position: absolute;
+  width: 200px;
+  top: -20px;
+  left: -20px;
+}
+.logo2 {
+  position: absolute;
+  width: 100px;
+  top: 0px;
+  left: 0px;
 }
