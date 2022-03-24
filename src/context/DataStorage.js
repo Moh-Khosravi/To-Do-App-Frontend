@@ -9,10 +9,13 @@ function AppState(props) {
   const [list, setList] = useState([]);
   const [isLoged, setIsLoged] = useState(false);
 
-  function getUser() {
-    fetch(process.env.REACT_APP_FETCH_URL_USER + `/${userId}`)
+  function getUser(id) {
+    fetch(process.env.REACT_APP_FETCH_URL_USER + `/${id}`)
       .then((response) => response.json())
-      .then((data) => setList(data.user.todos));
+      .then((data) => {
+        setList(data.user.todos);
+        setUserId(data.user.id);
+      });
   }
 
   function postTodo(input, inputStartDate, inputEndDate) {
@@ -100,6 +103,7 @@ function AppState(props) {
         userName,
         isLoged,
         setIsLoged,
+        getUser,
       }}
     >
       {props.children}

@@ -47,7 +47,7 @@ function Register() {
               id="floatingInput"
               placeholder="Max"
             />
-            <label for="floatingInput" className="label-register">
+            <label htmlFor="floatingInput" className="label-register">
               First name
             </label>
           </div>
@@ -59,7 +59,7 @@ function Register() {
               id="floatingInput"
               placeholder="Mustermann"
             />
-            <label for="floatingInput" className="label-register">
+            <label htmlFor="floatingInput" className="label-register">
               Last name
             </label>
           </div>
@@ -71,7 +71,7 @@ function Register() {
               id="floatingInput"
               placeholder="name@example.com"
             />
-            <label for="floatingInput" className="label-register">
+            <label htmlFor="floatingInput" className="label-register">
               Email address
             </label>
           </div>
@@ -83,7 +83,7 @@ function Register() {
               id="floatingInput"
               placeholder="Password"
             />
-            <label for="floatingInput" className="label-register">
+            <label htmlFor="floatingInput" className="label-register">
               Password
             </label>
           </div>

@@ -30,7 +30,8 @@ function FormLogin() {
     if (rawResponse.status === 200) {
       const data = await rawResponse.json();
       //sessionStorage.token = data.token;
-      Cookies.set('token', data.token);
+      Cookies.set('token', data.token, { expires: 1 }, { sameSite: 'none' });
+      Cookies.set('user', data.user.id, { expires: 1 }, { sameSite: 'none' });
       setIsLoged(true);
       setUserId(data.user.id);
       setUserName(data.user.firstName + ' ' + data.user.lastName);
@@ -57,7 +58,7 @@ function FormLogin() {
               id="floatingInput"
               placeholder="name@example.com"
             />
-            <label for="floatingInput" className="label-login">
+            <label htmlFor="floatingInput" className="label-login">
               Email address
             </label>
           </div>
@@ -69,7 +70,7 @@ function FormLogin() {
               id="floatingPassword"
               placeholder="Password"
             />
-            <label for="floatingPassword" className="label-login">
+            <label htmlFor="floatingPassword" className="label-login">
               Password
             </label>
           </div>

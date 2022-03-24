@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppData } from '../context/DataStorage.js';
 import { useNavigate } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
+import Cookies from 'js-cookie';
 
 function Logout() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Logout() {
     setUserName('');
     setList([]);
     setIsLoged(false);
+    Cookies.remove('token');
     navigate('/');
   }
 

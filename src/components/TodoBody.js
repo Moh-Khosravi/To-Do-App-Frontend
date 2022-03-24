@@ -7,7 +7,7 @@ function TodoBody() {
   const todos = [...list];
 
   function createLi() {
-    return todos.map((todo) => <TodoItem todo={todo} />);
+    return todos.map((todo) => <TodoItem key={todo._id} todo={todo} />);
   }
   return (
     <div className="container-todobody">

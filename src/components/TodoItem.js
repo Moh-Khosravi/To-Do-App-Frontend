@@ -53,14 +53,22 @@ function TodoItem({ todo }) {
       );
     } else {
       return (
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form className="form-edit" onSubmit={(e) => e.preventDefault()}>
           <input type="text" onChange={changeTitle} value={titleChange} />
-          <input
-            type="date"
-            onChange={changeStartDate}
-            value={startDateChange}
-          />
-          <input type="date" onChange={changeEndDate} value={endDateChange} />
+          <div className="date-edit">
+            <input
+              className="date-edit-start"
+              type="date"
+              onChange={changeStartDate}
+              value={startDateChange}
+            />
+            <input
+              className="date-edit-end"
+              type="date"
+              onChange={changeEndDate}
+              value={endDateChange}
+            />
+          </div>
         </form>
       );
     }
@@ -70,8 +78,14 @@ function TodoItem({ todo }) {
       {addNewInput()}
       <div className="container-icons">
         <MdDeleteForever className="close" onClick={handleDelete} />
-        <MdEditNote className="edit" onClick={handleEdit} />
-        <MdDoneAll className="done" onClick={handleDone} />
+        <MdEditNote
+          className={!isEditing ? 'not-edit' : 'edit'}
+          onClick={handleEdit}
+        />
+        <MdDoneAll
+          className={!completed ? 'not-done' : 'done'}
+          onClick={handleDone}
+        />
       </div>
     </li>
   );
