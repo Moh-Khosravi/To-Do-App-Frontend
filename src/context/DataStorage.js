@@ -5,7 +5,7 @@ const DataStorage = createContext();
 
 function AppState(props) {
   const [userId, setUserId] = useState('');
-  const [userName, setUserName] = useState('');
+  const [user, setUser] = useState('');
   const [list, setList] = useState([]);
   const [isLoged, setIsLoged] = useState(false);
 
@@ -99,8 +99,8 @@ function AppState(props) {
         postTodo,
         updateTodo,
         deleteTodo,
-        setUserName,
-        userName,
+        setUser,
+        user,
         isLoged,
         setIsLoged,
         getUser,

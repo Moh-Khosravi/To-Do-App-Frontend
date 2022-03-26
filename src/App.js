@@ -6,9 +6,10 @@ import Home from './components/Home.js';
 import { useAppData } from './context/DataStorage.js';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
+import UserProfile from './components/UserProfile.js';
 
 function App() {
-  const { isLoged, setIsLoged, getUser, setList, setUserId } = useAppData();
+  const { isLoged, setIsLoged, getUser } = useAppData();
 
   function readCookie() {
     const token = Cookies.get('token');
@@ -17,13 +18,13 @@ function App() {
     }
   }
   useEffect(() => {
-    readCookie();
-  }, []);
-
-  useEffect(() => {
     const id = Cookies.get('user');
-    getUser(id);
-  });
+
+    if (id) {
+      readCookie();
+      getUser(id);
+    }
+  }, []);
 
   return (
     <div className="container-app">
@@ -31,12 +32,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/login"
-          element={!isLoged ? <Login /> : <Navigate to="/user" />}
+          element={!isLoged ? <Login /> : <Navigate to="/todos" />}
         />
         <Route path="/register" element={<Register />} />
         <Route
-          path="/user"
+          path="/todos"
           element={isLoged ? <MainPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/user"
+          element={isLoged ? <UserProfile /> : <Navigate to="/login" />}
         />
       </Routes>
     </div>

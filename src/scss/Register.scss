@@ -1,0 +1,35 @@
+.container-register {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  height: 600px;
+  border-radius: 1rem;
+  .container-form-register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rem;
+    .signup-formular {
+      height: 50rem;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      .label-register {
+        font-size: 1.5rem;
+        color: black;
+      }
+      .signIn {
+        cursor: pointer;
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px;
+        font-size: 2rem;
+      }
+      #floatingInput {
+        font-size: 1.5rem;
+        height: 5rem;
+      }
+    }
+  }
+}

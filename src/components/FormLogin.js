@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormLogin.css';
+import '../scss/FormLogin.scss';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAppData } from '../context/DataStorage.js';
 import Logo from '../image/Logo.png';
@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 function FormLogin() {
   const navigate = useNavigate();
-  const { setUserId, setList, setUserName, setIsLoged } = useAppData();
+  const { setUserId, setList, setUser, setIsLoged } = useAppData();
 
   async function submit(e) {
     e.preventDefault();
@@ -34,9 +34,9 @@ function FormLogin() {
       Cookies.set('user', data.user.id, { expires: 1 }, { sameSite: 'none' });
       setIsLoged(true);
       setUserId(data.user.id);
-      setUserName(data.user.firstName + ' ' + data.user.lastName);
+      setUser(data.user);
       setList(data.user.todos);
-      navigate('/user');
+      navigate('/todos');
     } else {
       alert('Invalid login credentials');
     }

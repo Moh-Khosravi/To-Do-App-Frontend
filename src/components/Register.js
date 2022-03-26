@@ -1,5 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
-import './Register.css';
+import '../scss/Register.scss';
 import Logo from '../image/Logo.png';
 
 function Register() {

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAppData } from '../context/DataStorage.js';
 
 function Form() {
-  const { postTodo, userName } = useAppData();
+  const { postTodo, user } = useAppData();
 
   const [input, setInput] = useState('');
   const [inputStartDate, setInputStartDate] = useState(null);
@@ -37,13 +37,13 @@ function Form() {
   return (
     <div className="main-container">
       <div className="container-form">
-        <h1>Hello {userName}</h1>
+        <h1>Hello {user.firstName + ' ' + user.lastName}</h1>
         <form className="container-input" onSubmit={handleSubmit}>
           <input
             type="text"
             className="inputItem"
             placeholder="Add a todo ..."
-            value={input}
+            value={input || ''}
             onChange={handleChange}
           />
           <div>
@@ -51,7 +51,7 @@ function Form() {
             <input
               type="date"
               className="inputDate"
-              value={inputStartDate}
+              value={inputStartDate || ''}
               onChange={handleStartDate}
             />
           </div>
@@ -60,7 +60,7 @@ function Form() {
             <input
               type="date"
               className="inputDate"
-              value={inputEndDate}
+              value={inputEndDate || ''}
               onChange={handleEndDate}
             />
           </div>
