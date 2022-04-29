@@ -30,8 +30,18 @@ function FormLogin() {
     if (rawResponse.status === 200) {
       const data = await rawResponse.json();
       //sessionStorage.token = data.token;
-      Cookies.set('token', data.token, { expires: 1 }, { sameSite: 'none' });
-      Cookies.set('user', data.user.id, { expires: 1 }, { sameSite: 'none' });
+      Cookies.set(
+        'token ToDo',
+        data.token,
+        { expires: 1 },
+        { sameSite: 'none' }
+      );
+      Cookies.set(
+        'user ToDo',
+        data.user.id,
+        { expires: 1 },
+        { sameSite: 'none' }
+      );
       setIsLoged(true);
       setUserId(data.user.id);
       setUser(data.user);

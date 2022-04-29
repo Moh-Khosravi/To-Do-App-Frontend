@@ -22,7 +22,8 @@ function MenuBar() {
     setUser('');
     setList([]);
     setIsLoged(false);
-    Cookies.remove('token');
+    Cookies.remove('token ToDo');
+    Cookies.remove('user ToDo');
     navigate('/');
   }
 

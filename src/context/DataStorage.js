@@ -13,6 +13,7 @@ function AppState(props) {
     fetch(process.env.REACT_APP_FETCH_URL_USER + `/${id}`)
       .then((response) => response.json())
       .then((data) => {
+        setUser(data.user);
         setList(data.user.todos);
         setUserId(data.user.id);
       });
@@ -24,7 +25,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token')}`,
+        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
       },
       body: JSON.stringify({
         title: input,
@@ -50,7 +51,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token')}`,
+        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
       },
     })
       .then((response) => {
@@ -69,7 +70,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token')}`,
+        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
       },
       body: JSON.stringify({
         title: input,
