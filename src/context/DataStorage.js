@@ -25,7 +25,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
+        Authorization: `Bearer ${Cookies.get('token-ToDo')}`,
       },
       body: JSON.stringify({
         title: input,
@@ -51,7 +51,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
+        Authorization: `Bearer ${Cookies.get('token-ToDo')}`,
       },
     })
       .then((response) => {
@@ -70,7 +70,7 @@ function AppState(props) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${Cookies.get('token ToDo')}`,
+        Authorization: `Bearer ${Cookies.get('token-ToDo')}`,
       },
       body: JSON.stringify({
         title: input,

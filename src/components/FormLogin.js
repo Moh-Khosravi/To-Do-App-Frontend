@@ -31,13 +31,13 @@ function FormLogin() {
       const data = await rawResponse.json();
       //sessionStorage.token = data.token;
       Cookies.set(
-        'token ToDo',
+        'token-ToDo',
         data.token,
         { expires: 1 },
         { sameSite: 'none' }
       );
       Cookies.set(
-        'user ToDo',
+        'user-ToDo',
         data.user.id,
         { expires: 1 },
         { sameSite: 'none' }
